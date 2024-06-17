@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Signup User</title>
+  <link rel="icon" href="favicon2.ico" type="image/x-icon">
+  <link rel="stylesheet" href="styles.css">
+  <script src="RSAforJS.js"></script>
+</head>
+<body>
+  <a href="login.html" class="back-to-home">Login</a>
+
+  <div class="container">
+    <h1>Sign up for an account</h1>
+    <form id="signup-form" method="post" action="/signup_user" onsubmit="return validateAndEncryptForm()">
+      <label for="username">Enter your username:</label>
+      <input type="text" id="username" name="username" required>
+      <label for="password">Enter your password:</label>
+      <input type="password" id="password" name="password" required>
+      <label for="confirm-password">Confirm your password:</label>
+      <input type="password" id="confirm-password" name="confirm-password" required>
+      <input type="hidden" id="encrypted-password" name="encrypted-password">
+      <button type="submit">Sign up</button>
+    </form>
+    <p id="password-error" style="display: none; color: red;">Password must be at least 8 characters and contain no special characters</p>
+    <p id="confirm-password-error" style="display: none; color: red;">Passwords do not match</p>
+    <p id="username-error" style="display: none; color: red;">Username must contain no special characters</p>
+  </div>
+
+  <script>
+    
+    function validateForm() {
+      var username = document.getElementById("username").value;
+      var password = document.getElementById("password").value;
+      var confirmPassword = document.getElementById("confirm-password").value;
+      var specialCharRegex = /[!@#$%^&*(),.?":{}|<>]/g;
+
+      if (specialCharRegex.test(username)) {
+        document.getElementById("username-error").style.display = "block";
+        return false;
+      } else {
+        document.getElementById("username-error").style.display = "none";
+      }
+
+      if (password.length < 8 || specialCharRegex.test(password)) {
+        document.getElementById("password-error").style.display = "block";
+        return false;
+      } else {
+        document.getElementById("password-error").style.display = "none";
+      }
+
+      if (password !== confirmPassword) {
+        document.getElementById("confirm-password-error").style.display = "block";
+        return false;
+      } else {
+        document.getElementById("confirm-password-error").style.display = "none";
+      }
+
+      return true;
+    }
+
+    function encryptForm() {
+      var password = document.getElementById("password").value;
+      var encryptedPassword = RSAEncryption.RSA_Encryption(password);
+      document.getElementById("encrypted-password").value = encryptedPassword;
+      return true;
+    }
+
+    function validateAndEncryptForm() {
+      return validateForm() && encryptForm();
+    }
+  </script>
+</body>
+</html>

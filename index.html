@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome To CVF</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="favicon2.ico" type="image/x-icon">
+</head>
+<body>
+    <!-- Logout button -->
+    <a href="/logout" class="back-to-home">Logout</a>
+
+    <div class="logo">
+        <img src="logoClean.png" alt="CVF Logo" class="logo-image">
+    </div>
+    <div class="container">
+        <h1>Welcome To CVF</h1>
+        <p id="username-display" class="username-display"></p>
+        <div class="buttons">
+            <form action="signup_client.html">
+                <button type="submit" class="button">Sign up URL</button>
+            </form>
+            <form action="downloads.html">
+                <button type="submit" class="button">Download Page</button>
+            </form>
+            <form action="captchahandleWebsite.html">
+                <button type="submit" class="button">Try Our Captchas</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // if redirected fromcaptcha error
+            const captchaError = localStorage.getItem('captchaError');
+            if (captchaError === 'true') {
+                const toast = document.createElement('div');
+                toast.classList.add('toast');
+                toast.textContent = 'Error loading captcha. Please try again later.';
+                document.body.appendChild(toast);
+
+                setTimeout(() => {
+                    toast.classList.add('fade-out');
+                }, 500);
+
+                setTimeout(() => {
+                    toast.remove();
+                }, 2000);
+
+                // clear flag
+                localStorage.removeItem('captchaError');
+            }
+
+            fetch('/username')
+                .then(response => response.json())
+                .then(data => {
+                    const usernameDisplay = document.getElementById('username-display');
+                    if (data.username) {
+                        usernameDisplay.textContent = `Logged in as: ${data.username}`;
+                    } else {
+                        usernameDisplay.textContent = 'Not logged in';
+                    }
+                })
+                .catch(error => console.error('Error fetching username:', error));
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <link rel="icon" href="favicon2.ico" type="image/x-icon">
+  <link rel="stylesheet" href="styles.css">
+  <script src="RSAforJS.js"></script>
+</head>
+<body>
+  <div class="container">
+    <h1>Login to your account</h1>
+    <form id="login-form" method="post" action="/login" onsubmit="return encryptPassword()">
+      <label for="username">Enter your username:</label>
+      <input type="text" id="username" name="username" required>
+      <label for="password">Enter your password:</label>
+      <input type="password" id="password" name="password" required>
+      <input type="hidden" id="encrypted-password" name="encrypted-password">
+      <button type="submit">Login</button>
+    </form>
+    <form action="signup_user.html">
+      <button type="submit">Sign Up</button>
+    </form>
+  </div>
+
+  <script>
+    function encryptPassword() {
+      var password = document.getElementById("password").value;
+      var encryptedPassword = RSAEncryption.RSA_Encryption(password);
+      document.getElementById("encrypted-password").value = encryptedPassword;
+      return true;
+    }
+  </script>
+</body>
+</html>

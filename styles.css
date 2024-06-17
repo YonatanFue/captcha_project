@@ -1,0 +1,177 @@
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to top right, rgb(30, 50, 80), rgb(86, 105, 130));
+    height: 100vh;
+    color: #333;
+    text-align: center;
+    line-height: 1.6;
+    padding: 20px;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px;
+    background-color: #bbbbbb; 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.container h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 10px 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+label {
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+input[type="text"] {
+    padding: 10px;
+    margin-bottom: 20px;
+    width: 80%;
+    max-width: 300px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+p {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.left-align {
+    text-align: left;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    text-align: center;
+}
+
+ul li {
+    margin: 10px 0;
+}
+
+a {
+    color: #007BFF;
+    text-decoration: none;
+}
+
+.captcha-container img {
+    outline: 3px solid #3570af;
+}
+
+.back-to-home {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background-color: #007BFF;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.back-to-home:hover {
+    background-color: #0056b3;
+}
+
+.container .buttons {
+    display: flex;
+    justify-content: center;
+}
+
+.toast {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #ff6347;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 15px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.4);
+    opacity: 1;
+    transition: opacity 1.5s ease-out;
+}
+
+.toast.fade-out {
+    opacity: 0;
+}
+
+/* Adjust font size of everything except leaderboard */
+body {
+    font-size: 110%;
+}
+
+/* Leaderboard container */
+.leaderboard-container {
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    width: 300px;
+    padding: 20px;
+}
+
+/* Leaderboard list items */
+.leaderboard-container li {
+    margin: 10px 0;
+}
+
+/* Leaderboard titles */
+.leaderboard-container h2 {
+    margin-top: 0;
+    font-size: 160%; /* Increase size by 20% */
+}
+
+/* Leaderboard text */
+.leaderboard-container li:nth-child(1) {
+    color: gold; /* Gold color for first place */
+    font-weight: bold;
+}
+.leaderboard-container li:nth-child(2) {
+    color: silver; /* Silver color for second place */
+    font-weight: bold;
+}
+.leaderboard-container li:nth-child(3) {
+    color: #cd7f32; /* Bronze color for third place */
+    font-weight: bold;
+}
+.leaderboard-container li:nth-child(n+4) {
+    color: #808080; /* Gray for the rest */
+}
+
+

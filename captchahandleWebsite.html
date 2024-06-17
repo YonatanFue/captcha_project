@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Captcha Verification</title>
+  <link rel="icon" href="favicon2.ico" type="image/x-icon">
+  <link rel="stylesheet" href="styles.css">
+  <script src="captchahandlerWebsite.js" defer></script>
+</head>
+<script type="text/javascript" src="crypto-js.min.js"></script>
+<body>
+  <a href="index.html" class="back-to-home">Home</a>
+  <div class="container">
+    <h1>Captcha Verification</h1>
+    <div id="captcha-container" class="captcha-container">
+      <img id="captcha-image" src="" alt="Captcha">
+      <form id="captcha-form">
+        <label for="captcha-answer">Enter answer here:</label>
+        <input type="text" id="captcha-answer" name="captcha-answer">
+        <button type="submit">Submit Answer</button>
+      </form>
+    </div>
+    <button onclick="fetchCaptchaData(1)">Captcha 1</button>
+    <button onclick="fetchCaptchaData(2)">Captcha 2</button>
+    <button onclick="fetchCaptchaData(3)">Captcha 3</button>
+  </div>
+
+  <div class="leaderboard-container">
+    <h2>Leaderboard</h2>
+    <ol id="leaderboard">
+
+    </ol>
+    <h3>Your Score:</h3>
+    <p id="personal-score">Loading...</p>
+  </div>
+</body>
+</html>

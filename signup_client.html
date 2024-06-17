@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Signup Client</title>
+  <link rel="icon" href="favicon2.ico" type="image/x-icon">
+  <link rel="stylesheet" href="styles.css">
+  <script src="RSAforJS.js"></script>
+</head>
+<body>
+  <a href="index.html" class="back-to-home">Home</a>
+
+  <div class="container">
+    <h1>Sign up for captcha access</h1>
+    <form id="signup-form" method="post" action="/signup_client" onsubmit="return encryptURL()">
+      <label for="url">Enter your exact website URL, include http:</label>
+      <input type="text" id="url" name="url">
+      <input type="hidden" id="encrypted-url" name="encrypted-url">
+      <button type="submit">Sign up</button>
+    </form>
+    <p>Example: https://google.com/example</p>
+  </div>
+
+  <script>
+    function encryptURL() {
+      var url = document.getElementById("url").value;
+      console.log(url)
+      var encryptedUrl = RSAEncryption.RSA_Encryption(url);
+      document.getElementById("encrypted-url").value = encryptedUrl;
+      return true;
+    }
+  </script>
+</body>
+</html>
